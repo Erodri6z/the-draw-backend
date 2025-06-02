@@ -4,7 +4,22 @@ import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
 import formData from 'express-form-data'
+import OpenAI from 'openai'
 
+
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY
+})
+
+const completion = openai.chat.completions.create({
+  model: "gpt-4o-mini",
+  store: true,
+  messages: [
+    {"role": "user", "content": "write a haiku about ai"},
+  ],
+});
+
+completion.then((result) => console.log(result.choices[0].message));
 
 // connect to MongoDB with mongoose
 import './config/database.js'
