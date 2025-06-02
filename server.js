@@ -11,15 +11,22 @@ const openai = new OpenAI({
   apiKey: process.env.OPENAI_API_KEY
 })
 
-const completion = openai.chat.completions.create({
-  model: "gpt-4o-mini",
-  store: true,
-  messages: [
-    {"role": "user", "content": "write a haiku about ai"},
-  ],
-});
+async function run() {
+  try {
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini", // or "gpt-4o-mini-2024-07-18" if that’s the only version your key supports
+      messages: [
+        { role: "user", content: "write a poem about being an AI" }
+      ],
+    });
 
-completion.then((result) => console.log(result.choices[0].message));
+    console.log(completion.choices[0].message.content);
+  } catch (err) {
+    console.error("Error creating completion:", err);
+  }
+}
+
+// run();dependencie
 
 // connect to MongoDB with mongoose
 import './config/database.js'
