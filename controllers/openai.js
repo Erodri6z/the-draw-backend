@@ -28,3 +28,6 @@ async function generateResponse(req, res){
   }
 }
 
+export {
+  generateResponse
+}
