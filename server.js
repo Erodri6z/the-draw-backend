@@ -14,7 +14,7 @@ const openai = new OpenAI({
 // async function run() {
 //   try {
 //     const completion = await openai.chat.completions.create({
-//       model: "gpt-4o-mini", // or "gpt-4o-mini-2024-07-18" if that’s the only version your key supports
+//       model: "gpt-4o-mini", 
 //       messages: [
 //         { role: "user", content: "write a poem about being an AI" }
 //       ],
