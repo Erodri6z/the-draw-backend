@@ -4,32 +4,8 @@ import express from 'express'
 import logger from 'morgan'
 import cors from 'cors'
 import formData from 'express-form-data'
-import OpenAI from 'openai'
 
 
-
-
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
-})
-
-// async function run() {
-//   try {
-//     const completion = await openai.chat.completions.create({
-//       model: "gpt-4o-mini", 
-//       messages: [
-//         { role: "user", content: "write a poem about being an AI" }
-//       ],
-//     });
-
-//     console.log(completion.choices[0].message.content);
-//   } catch (err) {
-//     console.error("Error creating completion:", err);
-//   }
-// }
-
-// run();dependencie
 
 // connect to MongoDB with mongoose
 import './config/database.js'
@@ -38,6 +14,7 @@ import './config/database.js'
 // import { router as profilesRouter } from './routes/profiles.js'
 // import { router as authRouter } from './routes/auth.js'
 import { router as openaiRouter } from './routes/openai.js'
+import { router as tarotRouter } from './routes/tarots.js'
 
 
 // create the express app
@@ -53,6 +30,7 @@ app.use(formData.parse())
 // app.use('/api/profiles', profilesRouter)
 // app.use('/api/auth', authRouter)
 app.use("/api/openai", openaiRouter)
+app.use("/api/tarot", tarotRouter)
 
 // handle 404 errors
 app.use(function (req, res, next) {
