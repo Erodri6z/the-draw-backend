@@ -4,7 +4,8 @@ async function proxyImage(req, res){
   const { slug } = req.params
 
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME
-  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/tarot/${slug}.jpg`
+  const imageUrl = `https://res.cloudinary.com/${cloudName}/image/upload/Tart%20cards/${slug}`
+  
 
   try {
     const response = await fetch(imageUrl);

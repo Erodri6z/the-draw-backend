@@ -21,7 +21,7 @@ async function generateResponse(req, res){
     })
 
     const message = completion.choices[0].message.content
-    res.json({ response: message })
+    res.json({ response: message.replace(/\n/g, " ") })
   } catch (error) {
     console.error("Somethings wrong with openai", error)
     res.status(500).json({ error: 'Failed to generate response'})
