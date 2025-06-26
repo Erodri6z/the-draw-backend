@@ -1,5 +1,4 @@
 import jwt from 'jsonwebtoken'
-
 import { User } from '../models/user.js'
 import { Profile } from '../models/profile.js'
 
@@ -34,6 +33,7 @@ async function signup(req, res) {
 }
 
 async function login(req, res) {
+  console.log(req.body)
   try {
     if (!process.env.SECRET) throw new Error('no SECRET in back-end .env')
     if (!process.env.CLOUDINARY_URL) {
@@ -43,7 +43,7 @@ async function login(req, res) {
     const user = await User.findOne({ email: req.body.email })
     if (!user) throw new Error('User not found')
 
-    const isMatch = await user.comparePassword(req.body.password)
+    const isMatch = await user.comparePassword(req.body.pw)
     if (!isMatch) throw new Error('Incorrect password')
 
     const token = createJWT(user)

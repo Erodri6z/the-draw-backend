@@ -5,7 +5,7 @@ import * as tarotCtrl from '../controllers/tarot.js'
 const router = Router()
 
 router.use(decodeUserFromToken)
-router.get("/:slug", checkAuth, tarotCtrl.proxyImage)
+router.get("/:slug", tarotCtrl.proxyImage)
 
 export {
   router
