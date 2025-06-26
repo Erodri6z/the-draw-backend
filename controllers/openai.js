@@ -10,7 +10,7 @@ const openai = new OpenAI({
 async function generateResponse(req, res){
   try {
     const { prompt } = req.body;
-
+    console.log("prompt", prompt)
     if (!prompt) {
       return res.status(400).json({ error: 'There is nothing here to talk about' })
     }
@@ -18,7 +18,7 @@ async function generateResponse(req, res){
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
       messages: [{ role: 'user', content: prompt + "Please anwser in 3 paragraphs max" }],
-      max_tokens : 150
+      max_tokens : 300
     })
 
     const message = completion.choices[0].message.content
