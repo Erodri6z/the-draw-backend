@@ -3,8 +3,8 @@ import { app } from '../server.js'
 import http from 'http'
 
 // get port from environment and store in Express
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+const port = normalizePort(process.env.PORT || '8080')
+app.set('port', port)
 
 // create HTTP server
 const server = http.createServer(app)
