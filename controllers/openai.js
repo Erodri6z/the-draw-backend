@@ -17,7 +17,7 @@ async function generateResponse(req, res){
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4o-mini',
-      messages: [{ role: 'user', content: prompt + "Please anwser in 9 Sentences Max and under 300 tokens with the card meanings in mind regardless of if its positive or not. Also Include a final sentence with advice" }],
+      messages: [{ role: 'user', content: prompt + "Please anwser in 9 Sentences Max and under 300 tokens with the card meanings in mind regardless of if its positive or not. Also Include a final sentence with advice both love and personal goal." }],
       max_tokens : 300
     })
 
